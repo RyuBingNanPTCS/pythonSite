@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>manage</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    body {
+      width: 100vw;
+      height: 100vh;
+      background-image: linear-gradient(to bottom right, #89e3e4, #18718a)
+    }
+
+    .header a {
+      display: inline-block;
+      padding: 15px;
+    }
+
+    .login-box {
+      width: 400px;
+      padding: 24px;
+      margin: 48px auto;
+      background: #fff;
+      border-radius: 10px;
+    }
+
+    .login-box .p2 {
+      margin-top: 30px;
+      text-align: right;
+    }
+
+    .login-box .p2 a {
+      font-size: 14px;
+    }
+
+    .has-login {
+      width: 800px;
+    }
+
+    .search-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .search-box button {
+      width: 60px;
+      height: 32px;
+      line-height: 32px;
+      text-align: center;
+      background: #258dde;
+      color: #fff;
+      font-size: 16px;
+      border: 1px solid #aaa;
+      border-radius: 4px;
+    }
+
+    .search-box input {
+      width: 150px;
+      height: 32px;
+      line-height: 32px;
+      border: 1px solid #aaa;
+      border-radius: 4px;
+      padding-left: 8px;
+      vertical-align: top;
+      ;
+    }
+    .t-head, .t-body{
+      width: 100%;
+      height: 50px; 
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #e8e8e8;
+    }
+    .t-head{
+      background: #fafafa;
+    }
+    .t-head span, .t-body span {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .t-head span:nth-child(1), .t-body span:nth-child(1){
+      flex: 0 0 40px;
+    }
+    .t-head span:nth-child(2), .t-body span:nth-child(2){
+      flex: 0 0 120px;
+    }
+    .t-head span:nth-child(3), .t-body span:nth-child(3){
+      flex: 0 0 120px;
+    }
+    .t-head span:nth-child(4), .t-body span:nth-child(4){
+      flex: 0 0 120px;
+    }
+    .t-head span:nth-child(5), .t-body span:nth-child(5){
+      flex: auto;
+    }
+    .t-head span:nth-child(6), .t-body span:nth-child(6){
+      flex: 0 0 120px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <a href="/login">主页</a> <a href="/login/login">login</a> <a href="/login/manage">manage</a>
+  </div>
+
+  {% if request.session.username %}
+  <div class="login-box has-login">
+    <p class="p1">欢迎 {{ request.session.username}}</p>
+
+    <div class="search-box">
+      <button onclick="location.href='/login/reg'">add</button>
+      <form action="" method="get">
+        <input name="py" value="" placeholder="请输入py" />
+        <input name="email" value="" placeholder="请输入email" />
+        <button>search</button>
+        <button>reset</button>
+      </form>
+    </div>
+    <div class="table">
+      <div class="t-head">
+        <span>id</span>
+        <span>username</span>
+        <span>realname</span>
+        <span>py</span>
+          <span>email</span>
+          <span>operation</span>
+      </div>
+      {% for user in users %}
+      <div class="t-body">
+        <span>{{ user.id }}</span>
+        <span>{{ user.username }}</span>
+        <span>{{ user.realname }}</span>
+        <span>{{ user.py }}</span>
+        <span>{{ user.email }}</span>
+        <span>
+          <a href="/login/modify?uid={{ user.id }}">modify</a>
+          <a href="/login/delete?uid={{ user.id }}">delete</a>
+        </span>
+      </div>
+      {% endfor %}
+    </div>
+    <p class="p2"><a href="/login/logout">退出登录</a></p>
+  </div>
+  {% else %}
+  <div class="login-box">
+    <p class="p1">请注册或登录</p>
+    <p class="p2"><a href="/login/login">登录</a> <a href="/login/reg">注册</a></p>
+  </div>
+  {% endif %}
+</body>
+
+</html>

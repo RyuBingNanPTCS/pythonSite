@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>manage</title>
+</head>
+<body>
+    <div class="header" style="width:100%;background-color:yellow;height:50px;">
+        <div style="width:500px;margin:0 auto;text-align:center;"><a href="/login">主页</a> <a href="/login/login">login</a> <a href="/login/manage">manage</a> </div>
+    </div>
+    
+    <hr />
+    {% if request.session.username %}
+      <p>
+
+        欢迎 {{ request.session.username}}
+
+      </p>
+      <p>
+          <a href="/login/logout">退出登录</a>
+      </p>
+      <div>
+
+        <div style="margin:0 auto;width:600px;border:0px solid #000;">
+            <div style="float:left;width:598px;"><a href="/login/manage">back</a></div>
+            <div>
+                <form action="" method="post">
+                    <table border="1" align="center">
+                        <tr>
+                            <td>username: </td><td><input type="text" name="username" value="{{ user.username }}" /></td>
+                        </tr>
+                        <tr>
+                    <td>password: </td><td><input type="password" name="password" value="" /></td></tr>
+                    <tr>
+                    <td>realname: </td><td><input type="text" name="realname" value="{{ user.realname }}" /></td></tr>
+                    <tr>
+                    <td>py: </td><td><input type="text" name="py" value="{{ user.py }}" /></td></tr>
+                    <tr><td>email: </td><td><input type="text" name="email" value="{{ user.email }}" /></td></tr>
+
+                    <tr><td colspan="2" align="center"><input type="submit" value="modify" /></td></tr>
+                    </table>
+
+                </form>
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+
+
+
+
+    {% else %}
+    <p>请注册或登录</p>
+    <p><a href="/login/login">登录</a> <a href="/login/reg">注册</a></p>
+    <p></p>
+    
+    
+    {% endif %}
+
+</body>
+</html>

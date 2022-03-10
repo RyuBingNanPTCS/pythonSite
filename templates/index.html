@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>login</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    body {
+      width: 100vw;
+      height: 100vh;
+			background-image: linear-gradient(to bottom right, #89e3e4, #18718a)
+    }
+
+    .header a {
+      display: inline-block;
+      padding: 15px;
+    }
+
+    .login-box {
+      width: 400px;
+      padding: 24px;
+      margin: 48px auto;
+      background: #fff;
+      border-radius: 10px;
+    }
+    .login-box .p2{
+      margin-top: 60px;
+      text-align: right;
+    }
+    .login-box .p2 a {
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <a href="/login">主页</a> <a href="/login/login">login</a> <a href="/login/manage">manage</a>
+  </div>
+
+  <div class="login-box">
+    {% if request.session.username %}
+    <p class="p1">欢迎 {{ request.session.username}}</p>
+    <p class="p2"><a href="/login/logout">退出登录</a></p>
+    {% else %}
+    <p class="p1">请注册或登录</p>
+    <p class="p2"><a href="/login/login">登录</a> <a href="/login/reg">注册</a></p>
+    {% endif %}
+  </div>
+</body>
+
+</html>

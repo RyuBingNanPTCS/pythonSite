@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>login</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		a {
+			text-decoration: none;
+			color: #333;
+		}
+
+		body {
+			width: 100vw;
+			height: 100vh;
+			background-image: linear-gradient(to bottom right, #89e3e4, #18718a)
+		}
+
+		.header a {
+			display: inline-block;
+			padding: 15px;
+		}
+
+		.login-box {
+			width: 400px;
+			padding: 24px;
+			margin: 48px auto;
+			background: #fff;
+			border-radius: 10px;
+		}
+
+		.login-box p {
+			height: 60px;
+			display: flex;
+			align-items: center;
+		}
+
+		.login-box p span {
+			flex: 0 0 60px;
+			display: inline-block;
+			width: 60px;
+			margin-right: 10px;
+		}
+
+		.login-box p input {
+			flex: auto;
+			height: 36px;
+			line-height: 36px;
+			border: 1px solid #aaa;
+			border-radius: 4px;
+			padding-left: 8px;
+		}
+
+		.login-box p:last-child input {
+			background: #258dde;
+			color: #fff;
+			font-size: 16px;
+			padding-left: 0;
+		}
+
+		.reg-btn {
+			text-align: right;
+			margin-top: 40px;
+			font-size: 14px;
+		}
+		.reg-btn a {
+			color: #666;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="header">
+		<a href="/login">主页</a> <a href="/login/login">login</a> <a href="/login/manage">manage</a>
+	</div>
+	<div class="login-box">
+		<form action="" method="post">
+			<p><span>用户名</span><input type="text" name="username" value="" placeholder="请输入用户名" /></p>
+			<p><span>密码</span><input type="password" name="password" value="" placeholder="请输入密码" /></p>
+			<p><input type="submit" name="submit" value="提 交" /></p>
+		</form>
+		<div class="reg-btn">
+			<a href="/login/reg">注册</a>
+		</div>
+
+	</div>
+</body>
+
+</html>
