@@ -11,7 +11,6 @@ class UserAdmin(admin.ModelAdmin):
         'email',
         'password',
     ]
-
     fieldsets = (
         
     )

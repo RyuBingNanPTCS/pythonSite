@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>manage</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		a {
+			text-decoration: none;
+			color: #333;
+		}
+
+		body {
+			width: 100vw;
+			height: 100vh;
+			background-image: linear-gradient(to bottom right, #89e3e4, #18718a)
+		}
+
+		.header a {
+			display: inline-block;
+			padding: 15px;
+		}
+
+		.login-box {
+			width: 400px;
+			padding: 24px;
+			margin: 48px auto;
+			background: #fff;
+			border-radius: 10px;
+		}
+
+		.login-box .p2 {
+			margin-top: 30px;
+			text-align: right;
+		}
+
+		.login-box .p2 a {
+			font-size: 14px;
+		}
+
+		.login-form p {
+			height: 60px;
+			display: flex;
+			align-items: center;
+		}
+
+		.login-form p span {
+			flex: 0 0 80px;
+			display: inline-block;
+			width: 115px;
+			margin-right: 10px;
+		}
+
+		.login-form p input {
+			flex: auto;
+			height: 36px;
+			line-height: 36px;
+			border: 1px solid #aaa;
+			border-radius: 4px;
+			padding-left: 8px;
+		}
+
+		.login-form p:last-child input {
+			background: #258dde;
+			color: #fff;
+			font-size: 16px;
+			padding-left: 0;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="header">
+		<a href="/login">ホーム</a> <a href="/login/login">login</a> <a href="/login/manage">manage</a>
+	</div>
+
+	{% if request.session.username %}
+	<div class="login-box">
+		<p class="p1">ようこそ {{ request.session.username}}</p>
+		
+		<form class="login-form" action="" method="post">
+			<p><span>username</span> <input type="text" name="username" value="{{ user.username }}" /></p>
+			<p><span>password</span> <input type="password" name="password" value="" /></p>
+			<p><span>realname</span> <input type="text" name="realname" value="{{ user.realname }}" /></p>
+			<p><span>py</span> <input type="text" name="py" value="{{ user.py }}" /></p>
+			<p><span>email</span> <input type="text" name="email" value="{{ user.email }}" /></p>
+			<p><input type="submit" value="modify" /></p>
+		</form>
+		<p class="p2"><a href="/login/logout">ログアウト</a></p>
+	{% else %}
+		<p class="p1">ご登録かログインしてください。</p>
+		<p class="p2"><a href="/login/login">ログイン</a> <a href="/login/reg">登録</a></p>
+	</div>
+	{% endif %}
+</body>
+
+</html>

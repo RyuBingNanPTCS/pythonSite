@@ -14,7 +14,6 @@ class User(models.Model):
 
     def __str__(self):
         return self.username
-    
     class Meta:
         db_table = 'user'
         verbose_name = 'ユーザー一覧表'
