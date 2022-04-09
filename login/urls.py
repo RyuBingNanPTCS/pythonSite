@@ -11,5 +11,6 @@ urlpatterns = [
     path("manage",views.manage),
     path('delete', views.delete),
     path('modify', views.modify),
+    path('changepwd', views.change_pwd),
     # path("success", views.success),
 ]

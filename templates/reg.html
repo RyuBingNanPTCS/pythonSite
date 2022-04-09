@@ -16,7 +16,7 @@
 		}
 
 		body {
-			width: 100vw;
+			/* width: 100vw; */
 			height: 100vh;
 			background-image: linear-gradient(to bottom right, #89e3e4, #18718a)
 		}
@@ -29,7 +29,11 @@
 		.login-box {
 			width: 600px;
 			padding: 24px;
-			margin: 48px auto;
+			margin-top: 24px;
+			margin-left: auto;
+			margin-right: auto;
+			margin-bottom: 48px;
+			/* margin: 48px auto; */
 			background: #fff;
 			border-radius: 10px;
 		}
@@ -41,7 +45,7 @@
 		}
 
 		.login-box p span {
-			flex: 0 0 80px;
+			flex: 0 0 135px;
 			display: inline-block;
 			width: 115px;
 			margin-right: 10px;
@@ -80,7 +84,7 @@
 
 <body>
 	<div class="header">
-		<a href="/login">ホーム</a> <a href="/login/login">login</a> <a href="/login/manage">manage</a>
+		<a href="/login">ホーム</a> <a href="/login/login">login</a> <a href="/login/manage">manage</a><a href="/login/changepwd">change password</a>
 	</div>
 
 	<div class="login-box">
@@ -88,16 +92,16 @@
 			<p><b>*</b><span>ユーザID</span> <input type="text" name="username" value=""  placeholder="ご入力ください。" /></p>
 			<p><b>*</b><span>ユーザ名</span> <input type="text" name="realname" value=""  placeholder="ご入力ください。" /></p>
 			<p><b>*</b><span>カタカナ</span><input type="text" name="py" value=""  placeholder="ご入力ください。" /></p>
-			<p><b>*</b><span>メールアドレス</span> <input type="text" name="email" value=""  placeholder="ご入力ください。" /></p>
+			<p><b>*</b><span>メールアドレス</span> <input type="email" name="email" value=""  placeholder="ご入力ください。" /></p>
 			<p><b>*</b><span>パスワード</span> <input type="password" name="password_1" value=""  placeholder="ご入力ください。" /></p>
 			<p><b>*</b><span>パスワード再入力</span> <input type="password" name="password_2" value=""  placeholder="ご入力ください。" /></p>
 			<p><input type="submit" name="submit" value="登 録" /></p>
 			{{ error_message }}
 		</form>
 		
-		<div class="reg-btn">
+		<!-- <div class="reg-btn">
 			 <a href="/login/login">ログインしてください。</a>
-		</div>
+		</div> -->
 	</div>
 </body>
 

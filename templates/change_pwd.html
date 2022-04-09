@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>manage</title>
+	<title>change password</title>
 	<style>
 		* {
 			margin: 0;
@@ -27,7 +27,7 @@
 		}
 
 		.login-box {
-			width: 400px;
+			width: 500px;
 			padding: 24px;
 			margin: 48px auto;
 			background: #fff;
@@ -50,7 +50,7 @@
 		}
 
 		.login-form p span {
-			flex: 0 0 80px;
+			flex: 0 0 135px;
 			display: inline-block;
 			width: 115px;
 			margin-right: 10px;
@@ -81,17 +81,13 @@
 
 	{% if request.session.username %}
 	<div class="login-box">
-		<p class="p1">ようこそ {{ request.session.username}}</p>
-		
-		<form class="login-form" action="" method="post">
-			<p><span>username</span> <input type="text" name="username" value="{{ user.username }}" /></p>
-			<p><span>password</span> <input type="password" name="password" value="" /></p>
-			<p><span>realname</span> <input type="text" name="realname" value="{{ user.realname }}" /></p>
-			<p><span>py</span> <input type="text" name="py" value="{{ user.py }}" /></p>
-			<p><span>email</span> <input type="text" name="email" value="{{ user.email }}" /></p>
-			<p><input type="submit" value="modify" /></p>
+		<form class="login-form" action="/login/changepwd" method="post">
+			<p><b>*</b><span>请输入旧密码</span> <input type="password" name="old_password" value="" placeholder="ご入力ください。"  /></p>
+			<p><b>*</b><span>パスワード</span> <input type="password" name="password_1" value=""  placeholder="ご入力ください。" /></p>
+			<p><b>*</b><span>パスワード再入力</span> <input type="password" name="password_2" value=""  placeholder="ご入力ください。" /></p>
+			<p><input type="submit" name="submit" value="确认修改" /></p>
+            {{error_message}}
 		</form>
-		<p class="p2"><a href="/login/logout">ログアウト</a></p>
 	{% else %}
 		<p class="p1">ご登録かログインしてください。</p>
 		<p class="p2"><a href="/login/login">ログイン</a> <a href="/login/reg">登録</a></p>
