@@ -82,7 +82,7 @@
 	{% if request.session.username %}
 	<div class="login-box">
 		<form class="login-form" action="/login/changepwd" method="post">
-			<p><b>*</b><span>请输入旧密码</span> <input type="password" name="old_password" value="" placeholder="ご入力ください。"  /></p>
+			<p><b>*</b><span>古いパスワード</span> <input type="password" name="old_password" value="" placeholder="ご入力ください。"  /></p>
 			<p><b>*</b><span>パスワード</span> <input type="password" name="password_1" value=""  placeholder="ご入力ください。" /></p>
 			<p><b>*</b><span>パスワード再入力</span> <input type="password" name="password_2" value=""  placeholder="ご入力ください。" /></p>
 			<p><input type="submit" name="submit" value="确认修改" /></p>
