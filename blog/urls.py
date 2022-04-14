@@ -6,3 +6,4 @@ from .views import UserViewSet, EntryViewSet
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
 router.register(r'entries', EntryViewSet)
+router.register(r'login2', EntryViewSet)

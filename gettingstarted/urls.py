@@ -3,6 +3,7 @@ from django.urls import path, include
 from django.contrib import admin
 
 from blog.urls import router as blog_router
+from django.views.generic import TemplateView 
 
 admin.autodiscover()
 
@@ -23,4 +24,5 @@ urlpatterns = [
     path("login/", include("login.urls")),
     # blog.urlsをincludeする
     path("api/", include(blog_router.urls)),
+    path("login2/", include(blog_router.urls)),
 ]
