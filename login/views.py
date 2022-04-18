@@ -1,6 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
 from login.models import User
+import sys
+from .serializer import UserSerializer
+from rest_framework.parsers import JSONParser
+from rest_framework.decorators import api_view
 import hashlib
 # Create your views here.
 
@@ -94,10 +98,19 @@ def logout(request):
     return HttpResponseRedirect('/login/index')
 
 #ログイン
+# @api_view(['GET', 'POST'])
+# api_viewで実装してみたい
 def login(request):
+    data = JSONParser().parse(request)
+    # data2 = request.data
+    # api_viewがエラーをださなければrequest.dataで中身がとれる　
+    print(data)
+    print(data.get("username"))
+    print(data.get("password"))
+    serializer_class = UserSerializer
     if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
+        username = data.get('username')
+        password = data.get('password')
         print(username)
         user = User.objects.filter(username=username).first()
         if user:
@@ -117,7 +130,7 @@ def login(request):
             error_message = "用户名或密码错误"
             return render(request, 'login.html', locals())
     else:
-       
+        print("else")
         return render(request, 'login.html', locals())
 
 

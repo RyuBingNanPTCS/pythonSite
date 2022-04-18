@@ -19,9 +19,17 @@ export default {
   },
   methods: {
     login () {
-      this.$store.commit('setUserId', this.userId) // (1)
-      this.$store.commit('setPassword', this.password) 
-      this.$router.push(this.$route.query.redirect) // (2)
+      console.log("login");
+      console.log(this.userId);
+      axios.post("/login/login", {
+        "username": this.userId,
+        "password": this.password
+      })
+      .then(response => {
+        console.log("response")
+        console.log(response)
+        this.$router.push({path: '/login/manage'});
+      })
     }
   },
   mounted() {
