@@ -2,3 +2,4 @@ Django
 gunicorn
 django-heroku
 djangorestframework
+django_filters
