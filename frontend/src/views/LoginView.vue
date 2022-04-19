@@ -1,8 +1,11 @@
 <template>
   <div class="login">
-    <input v-model="userId" />
-    <input v-model="password" />
-
+    <input v-model="userId" placeholder="IDを入力してください。"/>
+  </div>
+  <div>
+    <input v-model="password" placeholder="PWを入力してください。"/>
+  </div>
+  <div>
     <button @click="login()" :disabled="!userId">ログイン</button>
   </div>
 </template>
@@ -28,7 +31,11 @@ export default {
       .then(response => {
         console.log("response")
         console.log(response)
-        this.$router.push({path: '/login/manage'});
+        this.$router.push({path: '/home'});
+      })
+      .catch(response => {
+        console.log(response)
+        console.log("error")
       })
     }
   },
