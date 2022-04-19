@@ -38,14 +38,6 @@ export default {
         console.log("error")
       })
     }
-  },
-  mounted() {
-    console.log("mounted");
-    axios.request("/login2")
-      .then(response => console.log(response))
-      .catch(error => console.log(error))
-    //    fetch('http://localhost:8081/sample/demo')
-    console.log(this.users);
   }
 }
 </script>
