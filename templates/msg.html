@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>login</title>
+	<title>change password</title>
 	<style>
 		* {
 			margin: 0;
@@ -27,27 +27,36 @@
 		}
 
 		.login-box {
-			width: 400px;
+			width: 500px;
 			padding: 24px;
 			margin: 48px auto;
 			background: #fff;
 			border-radius: 10px;
 		}
 
-		.login-box p {
+		.login-box .p2 {
+			margin-top: 30px;
+			text-align: right;
+		}
+
+		.login-box .p2 a {
+			font-size: 14px;
+		}
+
+		.login-form p {
 			height: 60px;
 			display: flex;
 			align-items: center;
 		}
 
-		.login-box p span {
-			flex: 0 0 80px;
+		.login-form p span {
+			flex: 0 0 135px;
 			display: inline-block;
-			width: 60px;
+			width: 115px;
 			margin-right: 10px;
 		}
 
-		.login-box p input {
+		.login-form p input {
 			flex: auto;
 			height: 36px;
 			line-height: 36px;
@@ -56,20 +65,11 @@
 			padding-left: 8px;
 		}
 
-		.login-box p:last-child input {
+		.login-form p:last-child input {
 			background: #258dde;
 			color: #fff;
 			font-size: 16px;
 			padding-left: 0;
-		}
-
-		.reg-btn {
-			text-align: right;
-			margin-top: 40px;
-			font-size: 14px;
-		}
-		.reg-btn a {
-			color: #666;
 		}
 	</style>
 </head>
@@ -78,18 +78,12 @@
 	<div class="header">
 		<a href="/login">ホーム</a> <a href="/login/login">login</a> <a href="/login/manage">manage</a><a href="/login/changepwd">change password</a>
 	</div>
-	
-	<div class="login-box">
-		<form action="/login/login" method="post">
-			<p><span>ユーザー名</span><input type="text" name="username" value="" placeholder="ユーザー名をご入力ください。" /></p>
-			<p><span>パスワード</span><input type="password" name="password" value="" placeholder="パスワードをご入力ください。" /></p>
-			<p><input type="submit" name="submit" value="ログイン" /></p>
-		</form>
-		{{error_message}}
-		<div class="reg-btn">
-			<a href="/login/reg">登録</a>
-		</div>
 
+	<div class="login-box">
+
+			<p><span>{{message}}</span>          <a href="/login/index">跳转到首页</a></p>
+            
+<!-- 修改成功, <a href="/login/index">ホームへ</a> -->
 	</div>
 </body>
 
