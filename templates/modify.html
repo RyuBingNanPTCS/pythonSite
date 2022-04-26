@@ -76,20 +76,20 @@
 
 <body>
 	<div class="header">
-		<a href="/login">ホーム</a> <a href="/login/login">login</a> <a href="/login/manage">manage</a><a href="/login/changepwd">change password</a>
-	</div>
+		<a href="/login">ホーム</a> <a href="/login/login">ログイン</a> <a href="/login/manage">管理</a><a href="/login/changepwd">パスワードを変更する</a>
+  	</div>
 
 	{% if request.session.username %}
 	<div class="login-box">
 		<p class="p1">ようこそ {{ request.session.username}}</p>
 		
 		<form class="login-form" action="" method="post">
-			<p><span>username</span> <input type="text" name="username" value="{{ user.username }}" /></p>
-			<p><span>password</span> <input type="password" name="password" value="" /></p>
-			<p><span>realname</span> <input type="text" name="realname" value="{{ user.realname }}" /></p>
-			<p><span>py</span> <input type="text" name="py" value="{{ user.py }}" /></p>
-			<p><span>email</span> <input type="text" name="email" value="{{ user.email }}" /></p>
-			<p><input type="submit" value="modify" /></p>
+			<p><span>ユーザー名</span> <input type="text" name="username" value="{{ user.username }}" /></p>
+			<p><span>パスワード</span> <input type="password" name="password" value="" /></p>
+			<p><span>お名前</span> <input type="text" name="realname" value="{{ user.realname }}" /></p>
+			<p><span>カタカナ</span> <input type="text" name="py" value="{{ user.py }}" /></p>
+			<p><span>Eメール</span> <input type="text" name="email" value="{{ user.email }}" /></p>
+			<p><input type="submit" value="編集" /></p>
 		</form>
 		<p class="p2"><a href="/login/logout">ログアウト</a></p>
 	{% else %}

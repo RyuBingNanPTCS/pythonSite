@@ -114,7 +114,7 @@
 
 <body>
   <div class="header">
-    <a href="/login">ホーム</a> <a href="/login/login">login</a> <a href="/login/manage">manage</a>
+		<a href="/login">ホーム</a> <a href="/login/login">ログイン</a> <a href="/login/manage">管理</a><a href="/login/changepwd">パスワードを変更する</a>
   </div>
 
   {% if request.session.username %}
@@ -122,22 +122,22 @@
     <p class="p1">ようこそ {{ request.session.username}}</p>
 
     <div class="search-box">
-      <button onclick="location.href='/login/reg'">add</button>
+      <button onclick="location.href='/login/reg'">新規</button>
       <form action="" method="get">
         <input name="py" value="" placeholder="ユーザー名" />
         <input name="email" value="" placeholder="Email" />
-        <button>search</button>
-        <button>reset</button>
+        <button>検索</button>
+        <button>キャンセル</button>
       </form>
     </div>
     <div class="table">
       <div class="t-head">
         <span>id</span>
-        <span>username</span>
-        <span>realname</span>
-        <span>py</span>
-          <span>email</span>
-          <span>operation</span>
+        <span>ユーザー名</span>
+        <span>お名前</span>
+        <span>カタカナ</span>
+        <span>Eメール</span>
+        <span>操作</span>
       </div>
       {% for user in users %}
       <div class="t-body">
@@ -147,8 +147,8 @@
         <span>{{ user.py }}</span>
         <span>{{ user.email }}</span>
         <span>
-          <a href="/login/modify?uid={{ user.id }}">modify</a>
-          <a href="/login/delete?uid={{ user.id }}">delete</a>
+          <a href="/login/modify?uid={{ user.id }}">編集</a>
+          <a href="/login/delete?uid={{ user.id }}">削除</a>
         </span>
       </div>
       {% endfor %}

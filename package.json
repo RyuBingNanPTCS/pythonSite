@@ -1,0 +1,14 @@
+{
+  "name": "tranquil-peak-10580",
+  "version": "1.0.0",
+  "main": "Procfile",
+  "license": "MIT",
+  "description": "A barebones Python app, which can easily be deployed to Heroku.",
+  "image": "heroku/python",
+  "repository": "https://github.com/heroku/python-getting-started",
+  "keywords": ["python", "django" ],
+  "addons": [ "heroku-postgresql" ],
+  "scripts": {
+    "server": "python manage.py runserver 127.0.0.1:8000"
+  }
+}
