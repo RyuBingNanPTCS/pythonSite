@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>manage</title>
+  <title>product_list</title>
   <style>
     * {
       margin: 0;
@@ -91,23 +91,9 @@
       text-overflow: ellipsis;
       white-space: nowrap;
     }
-    .t-head span:nth-child(1), .t-body span:nth-child(1){
-      flex: 0 0 40px;
-    }
-    .t-head span:nth-child(2), .t-body span:nth-child(2){
-      flex: 0 0 120px;
-    }
-    .t-head span:nth-child(3), .t-body span:nth-child(3){
-      flex: 0 0 120px;
-    }
-    .t-head span:nth-child(4), .t-body span:nth-child(4){
-      flex: 0 0 120px;
-    }
-    .t-head span:nth-child(5), .t-body span:nth-child(5){
-      flex: auto;
-    }
-    .t-head span:nth-child(6), .t-body span:nth-child(6){
-      flex: 0 0 120px;
+    img{
+        height: 48px;
+        width: 48px;
     }
   </style>
 </head>
@@ -126,10 +112,9 @@
     <p class="p1">ようこそ {{ request.session.username}}</p>
 
     <div class="search-box">
-      <button onclick="location.href='/login/reg'">新規</button>
+      <button onclick="location.href='/login/productadd'">新規</button>
       <form action="" method="get">
-        <input name="py" value="" placeholder="ユーザー名" />
-        <input name="email" value="" placeholder="Email" />
+        <input name="product_name" value="" placeholder="商品名" />
         <button>検索</button>
         <button>キャンセル</button>
       </form>
@@ -137,22 +122,34 @@
     <div class="table">
       <div class="t-head">
         <span>id</span>
-        <span>ユーザー名</span>
-        <span>お名前</span>
-        <span>カタカナ</span>
-        <span>Eメール</span>
+        <span>商品名</span>
+        <span>商品描述</span>
+        <span>商品原价</span>
+        <span>商品现价</span>
+        <span>数量</span>
+        <span>商品图片1</span>
+        <span>商品图片2</span>
+        <span>商品图片3</span>
+        <span>商品图片4</span>
+        <span>商品图片5</span>
         <span>操作</span>
       </div>
-      {% for user in users %}
+      {% for product in product_list %}
       <div class="t-body">
-        <span>{{ user.id }}</span>
-        <span>{{ user.username }}</span>
-        <span>{{ user.realname }}</span>
-        <span>{{ user.py }}</span>
-        <span>{{ user.email }}</span>
+        <span>{{ product.id }}</span>
+        <span>{{ product.prod_name }}</span>
+        <span>{{ product.prod_desc }}</span>
+        <span>{{ product.prod_price }}</span>
+        <span>{{ product.prod_now_price }}</span>
+        <span>{{ product.prod_num }}</span>
+        <span><img src="{{ product.prod_pic1 }}"/></span>
+        <span>{{ product.prod_pic2 }}</span>
+        <span>{{ product.prod_pic3 }}</span>
+        <span>{{ product.prod_pic4 }}</span>
+        <span>{{ product.prod_pic5 }}</span>
         <span>
-          <a href="/login/modify?uid={{ user.id }}">編集</a>
-          <a href="/login/delete?uid={{ user.id }}">削除</a>
+          <a href="/login/productadd?uid={{ product.id }}">編集</a>
+          <a href="/login/productdelete?uid={{ product.id }}">削除</a>
         </span>
       </div>
       {% endfor %}

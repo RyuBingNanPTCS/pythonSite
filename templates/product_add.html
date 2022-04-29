@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>productadd</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		a {
+			text-decoration: none;
+			color: #333;
+		}
+
+		body {
+			width: 100vw;
+			height: 120vh;
+			background-image: linear-gradient(to bottom right, #89e3e4, #18718a)
+		}
+
+		.header a {
+			display: inline-block;
+			padding: 15px;
+		}
+
+		.login-box {
+			width: 500px;
+			padding: 24px;
+			margin: 48px auto;
+			background: #fff;
+			border-radius: 10px;
+		}
+
+		.login-box .p2 {
+			margin-top: 30px;
+			text-align: right;
+		}
+
+		.login-box .p2 a {
+			font-size: 14px;
+		}
+
+		.login-form p {
+			height: 45px;
+			display: flex;
+			align-items: center;
+		}
+
+		.login-form p span {
+			flex: 0 0 135px;
+			display: inline-block;
+			width: 115px;
+			margin-right: 10px;
+		}
+
+		.login-form p input {
+			flex: auto;
+			height: 36px;
+			line-height: 36px;
+			border: 1px solid #aaa;
+			border-radius: 4px;
+			padding-left: 8px;
+		}
+
+		.login-form p:last-child input {
+			background: #258dde;
+			color: #fff;
+			font-size: 16px;
+			padding-left: 0;
+		}
+
+        .login-form p select {
+			flex: auto;
+			height: 36px;
+			line-height: 36px;
+			border: 1px solid #aaa;
+			border-radius: 4px;
+			padding-left: 8px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="header">
+		<a href="/login">ホーム</a>
+        <a href="/login/login">ログイン</a> 
+        <a href="/login/manage">管理</a>
+        <a href="/login/changepwd">パスワードを変更する</a>
+        <a href="/login/productadd">商品登録</a>
+        <a href="/login/productlist">商品列表</a>
+	</div>
+	<!-- <include></include> -->
+	{% if request.session.username %}
+	<div class="login-box">
+		<form class="login-form" action="/login/productadd" method="post" enctype="multipart/form-data">
+			<p><b>*</b><span>商品名</span> <input type="text" name="prod_name" value="" placeholder=""  /></p>
+			<p><b>*</b><span>商品描述</span> <input type="text" name="prod_desc" value=""  placeholder="" /></p>
+			<p><b>*</b><span>商品原价</span> <input type="number" step="0.01" name="prod_price" value=""  placeholder="" /></p>
+			<p><b>*</b><span>商品现价</span> <input type="number" step="0.01" name="prod_now_price" value=""  placeholder="" /></p>
+            <p><b>*</b><span>商品数量</span> <input type="number" name="prod_num" value=""  placeholder="" /></p>
+			<p><b>*</b><span>商品图片1</span> <input type="file" name="prod_pic1" value=""  placeholder="" /></p>
+			<p><b>&nbsp;&nbsp;</b><span>商品图片2</span> <input type="file" name="prod_pic2" value=""  placeholder="" /></p>
+			<p><b>&nbsp;&nbsp;</b><span>商品图片3</span> <input type="file" name="prod_pic3" value=""  placeholder="" /></p>
+			<p><b>&nbsp;&nbsp;</b><span>商品图片4</span> <input type="file" name="prod_pic4" value=""  placeholder="" /></p>
+			<p><b>&nbsp;&nbsp;</b><span>商品图片5</span> <input type="file" name="prod_pic5" value=""  placeholder="" /></p>
+			<p><b>&nbsp;&nbsp;</b><span>商品类别</span>
+                <select name="category">
+                    {%for category in category_list%}
+                    <option value="{{category}}">{{category.category_name}}</option>
+                    {%endfor%}
+                </select>
+            </p>
+			<p><input type="submit" name="submit" value="登 録" /></p>
+            {{error_message}}
+		</form>
+	{% else %}
+		<p class="p1">ご登録かログインしてください。</p>
+		<p class="p2"><a href="/login/login">ログイン</a> <a href="/login/reg">登録</a></p>
+	</div>
+	{% endif %}
+</body>
+</html>
