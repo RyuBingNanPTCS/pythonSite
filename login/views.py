@@ -5,6 +5,10 @@ from django.http import HttpResponse,HttpResponseRedirect
 from login.models import Category, Product, User
 import hashlib
 from django.core.files.base import File
+from rest_framework import viewsets
+from .models import UserInfo
+from .serializer import UserInfoSerializer
+
 # Create your views here.
 
 #パスワードmd5暗号化
@@ -291,3 +295,8 @@ def product_list(request):
         if product.prod_pic5:
             product.prod_pic5 = '/login' + settings.MEDIA_URL + str(product.prod_pic5)
     return render(request, 'product_list.html', locals())
+
+class UserInfoViewSet(viewsets.ModelViewSet):
+    queryset = UserInfo.objects.all()
+
+    serializer_class = UserInfoSerializer
